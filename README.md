@@ -20,13 +20,7 @@ SilentCodeTeams 的集中反馈入口，用于提交缺陷报告、功能建议�
 
 ### 3. 已登记项目
 
-请先阅读对应目录下的说明，再提交 issue。
-
-| 项目 | 目录 | 仓库 | 状态 |
-| --- | --- | --- | --- |
-| NetTool ζ | [nettool](nettool/) | [SilentCodeTeams/nettool](https://github.com/SilentCodeTeams/nettool) | Active |
-
-新项目完成登记后，会在本表补充对应目录。
+已登记项目在仓库根目录拥有同名文件夹。文件夹内容由各项目团队维护，是否提供说明以项目团队发布为准。提交 issue 时请注明项目名称或目录名。
 
 ## 提交 issue 前
 
@@ -48,6 +42,5 @@ SilentCodeTeams 的集中反馈入口，用于提交缺陷报告、功能建议�
 - SilentStudio: https://github.com/Silent-Studio-CN
 - SilentCodeTeams: https://github.com/SilentCodeTeams
 - 维护与安全政策: https://github.com/SilentCodeTeams
-- NetTool ζ: https://github.com/SilentCodeTeams/nettool
 - 安全报告: SilentStudio@feedback.email.cn
 - 一般联系: SilentStudio@Home.email.cn

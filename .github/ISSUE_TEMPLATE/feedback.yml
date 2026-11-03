@@ -7,14 +7,12 @@ body:
       value: |
         安全漏洞请勿在此公开提交，请发送至 SilentStudio@feedback.email.cn。
         Do not report security vulnerabilities here. Email SilentStudio@feedback.email.cn.
-  - type: dropdown
+  - type: input
     id: project
     attributes:
-      label: 项目
-      description: 反馈针对哪个项目？
-      options:
-        - NetTool ζ
-        - 其他（未列出）
+      label: 项目名称
+      description: 请填写反馈针对的项目；已登记项目请使用其目录名。
+      placeholder: 项目名称或目录名
     validations:
       required: true
   - type: input
