@@ -15,6 +15,18 @@ body:
       placeholder: 项目名称或目录名
     validations:
       required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: 类别
+      description: 选择反馈类别。
+      options:
+        - bug
+        - language
+        - feature
+        - question
+    validations:
+      required: true
   - type: input
     id: version
     attributes:

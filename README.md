@@ -1,46 +1,49 @@
 # SilentCodeTeams Feedback
 
-SilentCodeTeams 的集中反馈入口，用于提交缺陷报告、功能建议、使用问题与项目咨询。
+[English](README.md) · [简体中文](README.zh-CN.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Русский](README.ru.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [العربية](README.ar.md) · [Português](README.pt.md) · [Italiano](README.it.md) · [हिन्दी](README.hi.md) · [ไทย](README.th.md) · [Tiếng Việt](README.vi.md) · [Bahasa Indonesia](README.id.md) · [Türkçe](README.tr.md) · [Nederlands](README.nl.md)
 
-## 仓库用途
+The central feedback entry for SilentCodeTeams: bug reports, feature requests, usage questions and project inquiries.
 
-- 汇总 SilentCodeTeams 项目的反馈
-- 为每个已登记项目提供独立目录与提交说明
-- 统一安全漏洞的报告路径，避免在公开 issue 中披露敏感信息
+## Scope and routing
 
-## 反馈范围与提交路径
+### 1. Projects not under SilentCodeTeams
 
-### 1. 非 SilentCodeTeams 项目
+Some SilentStudio projects may not be registered yet. Submit feedback through the SilentStudio-CN feedback channel; if no dedicated repository exists yet, email SilentStudio@Home.email.cn. We cannot guarantee a reply to every message.
 
-部分 SilentStudio 项目可能尚未完成登记。此类项目请在 SilentStudio-CN 组织的反馈渠道提交；若该渠道尚未建立独立仓库，请通过 SilentStudio@Home.email.cn 联系。由于资源有限，无法保证逐一回复。
+### 2. SilentCodeTeams projects without a dedicated folder
 
-### 2. 属于 SilentCodeTeams、但尚未建立独立目录的项目
+Open an issue in this repository and state the project name, version or commit at the beginning of the title or body.
 
-请直接在本仓库提交 issue，并在标题或正文开头注明项目名称、版本或提交号，便于分流。
+### 3. Registered projects
 
-### 3. 已登记项目
+Registered projects have a folder at the repository root. The folder is the default feedback entry for that project. The following four category subfolders are the standard layout:
 
-已登记项目在仓库根目录拥有同名文件夹。文件夹内容由各项目团队维护，是否提供说明以项目团队发布为准。提交 issue 时请注明项目名称或目录名。
+- language: translation, terminology and localization requests
+- bug: program or service defects
+- feature: feature requests and improvements
+- question: usage questions and inquiries
 
-## 提交 issue 前
+A project may not have every standard folder, and may add its own folders. Check the actual project folder before posting. Mention the project name and category in your issue, for example [project][bug].
 
-- 搜索是否已有相同问题
-- 注明项目、版本或 commit、操作系统与架构
-- 提供复现步骤、期望结果与实际结果
-- 附上必要的日志或截图；不要包含密钥、令牌、个人数据
-- 安全漏洞请勿公开提交，请发送至 SilentStudio@feedback.email.cn
-- 请勿发布未经授权的测试细节或攻击性内容
+## Before opening an issue
 
-## 响应说明
+- Search existing issues first.
+- Include project, version or commit, operating system and architecture.
+- Include reproduction steps, expected and actual behavior.
+- Attach relevant logs or screenshots; never include secrets or personal data.
+- Do not report security vulnerabilities publicly. Email SilentStudio@feedback.email.cn.
+- Do not post unauthorized testing details or offensive content.
 
-- 反馈按优先级处理，不承诺固定 SLA
-- 安全漏洞按 SilentCodeTeams 维护与安全政策处理
-- 善意报告者不会因测试行为被追责
+## Response
 
-## 链接
+- Feedback is handled by priority; no fixed SLA.
+- Security reports follow the SilentCodeTeams maintenance and security policy.
+- Good-faith reporters will not be pursued.
+
+## Links
 
 - SilentStudio: https://github.com/Silent-Studio-CN
 - SilentCodeTeams: https://github.com/SilentCodeTeams
-- 维护与安全政策: https://github.com/SilentCodeTeams
-- 安全报告: SilentStudio@feedback.email.cn
-- 一般联系: SilentStudio@Home.email.cn
+- Maintenance and security policy: https://github.com/SilentCodeTeams
+- Security: SilentStudio@feedback.email.cn
+- General contact: SilentStudio@Home.email.cn
