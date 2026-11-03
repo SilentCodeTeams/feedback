@@ -4,7 +4,7 @@
 
 </div>
 
-# SilentCodeTeams Feedback
+# SilentCodeTeams 反馈
 
 
 SilentCodeTeams 的集中反馈入口，用于提交缺陷报告、功能建议、使用问题与项目咨询。
