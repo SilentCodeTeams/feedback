@@ -9,6 +9,8 @@ Nederlands · [简体中文](../README.md) · [English](README.en.md) · [Españ
 
 Centrale feedbackingang voor SilentCodeTeams: bugmeldingen, functieverzoeken, gebruiksvragen en projectvragen.
 
+**[Feedbackingang](https://silentcodeteams.github.io/feedback/)** — Klik hier om feedback te sturen.
+
 ## Bereik en routes
 
 ### 1. Projecten buiten SilentCodeTeams

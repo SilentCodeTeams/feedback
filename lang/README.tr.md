@@ -9,6 +9,8 @@ Türkçe · [简体中文](../README.md) · [English](README.en.md) · [Español
 
 SilentCodeTeams için merkezi geri bildirim girişi: hata raporları, özellik istekleri, kullanım soruları ve proje talepleri.
 
+**[Geri bildirim girişi](https://silentcodeteams.github.io/feedback/)** — Geri bildirim göndermek için buraya tıklayın.
+
 ## Kapsam ve gönderim yolları
 
 ### 1. SilentCodeTeams dışındaki projeler

@@ -9,6 +9,8 @@ Español · [简体中文](../README.md) · [English](README.en.md) · [Françai
 
 Punto central de comentarios de SilentCodeTeams para informes de errores, solicitudes de funciones, preguntas de uso y consultas sobre proyectos.
 
+**[Entrada de comentarios](https://silentcodeteams.github.io/feedback/)** — Haz clic aquí para enviar comentarios.
+
 ## Alcance y rutas de envío
 
 ### 1. Proyectos que no pertenecen a SilentCodeTeams

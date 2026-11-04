@@ -9,6 +9,8 @@ Français · [简体中文](../README.md) · [English](README.en.md) · [Españo
 
 Point d'entrée central des retours pour SilentCodeTeams : rapports de bogues, demandes de fonctionnalités, questions d'utilisation et demandes concernant les projets.
 
+**[Entrée des retours](https://silentcodeteams.github.io/feedback/)** — Cliquez ici pour envoyer un retour.
+
 ## Portée et parcours de soumission
 
 ### 1. Projets hors SilentCodeTeams

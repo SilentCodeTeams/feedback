@@ -9,6 +9,8 @@ Deutsch · [简体中文](../README.md) · [English](README.en.md) · [Español]
 
 Zentrale Feedback-Anlaufstelle für SilentCodeTeams: Fehlerberichte, Funktionswünsche, Nutzungsfragen und Projektanfragen.
 
+**[Feedback-Eingang](https://silentcodeteams.github.io/feedback/)** — Klicken Sie hier, um Feedback zu senden.
+
 ## Umfang und Zustellung
 
 ### 1. Projekte außerhalb von SilentCodeTeams

@@ -3,9 +3,9 @@ contact_links:
   - name: 安全漏洞私下报告 / Security report
     url: https://github.com/SilentCodeTeams/feedback#readme
     about: 请勿在公开 issue 中披露安全漏洞；请通过 README 中的安全邮箱联系。
-  - name: 语言优先入口 / Language-first entry
+  - name: 反馈入口 / Feedback entry
     url: https://silentcodeteams.github.io/feedback/
-    about: 先选择语言，再进入对应语言的缺陷、功能、翻译或使用问题表单。
+    about: 打开反馈入口，选择语言和反馈类型。 / Open the feedback entry and choose a language and feedback type.
   - name: 完整模板选择页 / Full template picker
     url: https://github.com/SilentCodeTeams/feedback/issues/new/choose
     about: 如果 New issue 只显示弹窗，可用此链接打开完整选择页。

@@ -4,12 +4,13 @@ English · [简体中文](../README.md) · [Español](README.es.md) · [Françai
 
 </div>
 
-**[Language-first entry](https://silentcodeteams.github.io/feedback/)**
 
 # SilentCodeTeams Feedback
 
 
 The central feedback entry for SilentCodeTeams: bug reports, feature requests, usage questions and project inquiries.
+
+**[Feedback entry](https://silentcodeteams.github.io/feedback/)** — Please click here to submit feedback.
 
 ## Scope and routing
 

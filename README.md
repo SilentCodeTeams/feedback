@@ -4,12 +4,13 @@
 
 </div>
 
-**[语言优先入口](https://silentcodeteams.github.io/feedback/)**
 
 # SilentCodeTeams 反馈
 
 
 SilentCodeTeams 的集中反馈入口，用于提交缺陷报告、功能建议、使用问题与项目咨询。
+
+**[反馈入口](https://silentcodeteams.github.io/feedback/)** — 请点击这里提交反馈。
 
 ## 反馈范围与提交路径
 

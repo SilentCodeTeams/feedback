@@ -9,6 +9,8 @@ Tiếng Việt · [简体中文](../README.md) · [English](README.en.md) · [Es
 
 Kênh phản hồi trung tâm của SilentCodeTeams: báo lỗi, đề xuất tính năng, câu hỏi sử dụng và yêu cầu về dự án.
 
+**[Lối vào phản hồi](https://silentcodeteams.github.io/feedback/)** — Nhấp vào đây để gửi phản hồi.
+
 ## Phạm vi và cách gửi
 
 ### 1. Dự án không thuộc SilentCodeTeams

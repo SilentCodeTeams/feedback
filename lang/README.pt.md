@@ -9,6 +9,8 @@ Português · [简体中文](../README.md) · [English](README.en.md) · [Españ
 
 Ponto central de feedback da SilentCodeTeams: relatórios de bugs, pedidos de recursos, dúvidas de uso e consultas sobre projetos.
 
+**[Entrada de feedback](https://silentcodeteams.github.io/feedback/)** — Clique aqui para enviar feedback.
+
 ## Escopo e rotas de envio
 
 ### 1. Projetos fora da SilentCodeTeams
