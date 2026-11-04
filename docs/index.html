@@ -107,6 +107,8 @@
     padding: 9px 13px;
     font: inherit;
     font-size: 14px;
+    display: inline-block;
+    text-decoration: none;
     cursor: pointer;
     animation: fadeUp 260ms ease both;
     animation-delay: calc(var(--i, 0) * 24ms);
@@ -444,22 +446,15 @@ function renderLanguages() {
   var suggested = browserLanguage();
   for (var i = 0; i < LANGS.length; i++) {
     (function (lang, index) {
-      var button = document.createElement("button");
-      button.type = "button";
-      button.className = "lang";
-      button.textContent = lang.name;
-      button.style.setProperty("--i", index);
+      var link = document.createElement("a");
+      link.className = "lang";
+      link.href = "#" + lang.code;
+      link.textContent = lang.name;
+      link.style.setProperty("--i", index);
       if (lang.code === suggested) {
-        button.classList.add("suggested");
+        link.classList.add("suggested");
       }
-      button.addEventListener("click", function () {
-        if (window.location.hash === "#" + lang.code) {
-          route(false);
-        } else {
-          window.location.hash = lang.code;
-        }
-      });
-      grid.appendChild(button);
+      grid.appendChild(link);
     })(LANGS[i], i);
   }
 }

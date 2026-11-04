@@ -4,6 +4,8 @@
 
 </div>
 
+**[语言优先入口](https://silentcodeteams.github.io/feedback/)**
+
 # SilentCodeTeams 反馈
 
 
