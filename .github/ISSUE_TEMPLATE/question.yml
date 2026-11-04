@@ -5,15 +5,49 @@ body:
   - type: markdown
     attributes:
       value: |
-        请先搜索已有 issue 和 README。安全漏洞请勿公开提交。
-  - type: input
+        请先搜索已有 issue 和 README。
+        安全漏洞请勿在此公开提交，请发送至 SilentStudio@feedback.email.cn。
+  - type: dropdown
+    id: feedback_language
+    attributes:
+      label: 反馈语言 / Feedback language
+      description: 选择你希望我们回复时使用的语言。
+      options:
+        - 简体中文
+        - English
+        - Español
+        - Français
+        - Deutsch
+        - Русский
+        - 日本語
+        - 한국어
+        - العربية
+        - Português
+        - Italiano
+        - हिन्दी
+        - ไทย
+        - Tiếng Việt
+        - Bahasa Indonesia
+        - Türkçe
+        - Nederlands
+    validations:
+      required: true
+  - type: dropdown
     id: project
     attributes:
       label: 项目 / Project
-      description: 项目名或 feedback 目录名。
-      placeholder: 项目名或目录名
+      description: 选择已登记项目；未列出请选“其他”并在下一项填写。
+      options:
+        - NetTool ζ
+        - 其他 / Not listed
     validations:
       required: true
+  - type: input
+    id: project_other
+    attributes:
+      label: 其他项目 / Other project
+      description: 如果上方选择“其他”，请填写项目名或 feedback 目录名；否则可留空。
+      placeholder: 项目名或目录名
   - type: input
     id: version
     attributes:

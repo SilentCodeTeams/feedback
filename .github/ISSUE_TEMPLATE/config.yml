@@ -3,6 +3,9 @@ contact_links:
   - name: 安全漏洞私下报告 / Security report
     url: https://github.com/SilentCodeTeams/feedback#readme
     about: 请勿在公开 issue 中披露安全漏洞；请通过 README 中的安全邮箱联系。
+  - name: 完整模板选择页 / Full template picker
+    url: https://github.com/SilentCodeTeams/feedback/issues/new/choose
+    about: 如果 New issue 只显示弹窗，可用此链接打开完整选择页。
   - name: 反馈说明 / Feedback guide
     url: https://github.com/SilentCodeTeams/feedback#readme
     about: 查看反馈范围、项目目录与提交路径。
