@@ -37,7 +37,7 @@ body:
     id: cvss
     attributes:
       label: CVSS 向量或评分（可选）
-      description: 例如 CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H 或 9.8。安全漏洞请走安全邮箱，不要公开利用细节。
+      description: 例如 CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H 或 9.8；可用 https://www.first.org/cvss/calculator/3.1 计算。安全漏洞请走安全邮箱，不要公开利用细节。
       placeholder: CVSS:3.1/...
   - type: input
     id: summary
