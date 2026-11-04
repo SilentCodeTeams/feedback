@@ -1,0 +1,127 @@
+name: 不具合報告
+description: プログラム、サービス、プロトコルの不具合を報告します。
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: '> セキュリティ脆弱性は公開しないでください。SilentStudio@feedback.email.cn までご連絡ください。
+
+      >
+
+      > **回答言語：日本語**'
+- type: markdown
+  attributes:
+    value: '---
+
+      ## 基本情報'
+- type: input
+  id: project
+  attributes:
+    label: プロジェクト
+    placeholder: NetTool ζ / プロジェクト名またはフォルダ
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: バージョンまたは commit
+    placeholder: v0.1.0 または commit
+- type: dropdown
+  id: os
+  attributes:
+    label: オペレーティングシステム
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - その他
+  validations:
+    required: true
+- type: input
+  id: os_version
+  attributes:
+    label: OS バージョン
+    placeholder: macOS 15.1
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## 影響'
+- type: dropdown
+  id: severity
+  attributes:
+    label: 重大度
+    options:
+    - S1 - 重大
+    - S2 - 高
+    - S3 - 中
+    - S4 - 低
+  validations:
+    required: true
+- type: input
+  id: cvss
+  attributes:
+    label: CVSS ベクトルまたはスコア（任意）
+    placeholder: CVSS:3.1/...
+- type: input
+  id: summary
+  attributes:
+    label: 概要
+    placeholder: 短い説明
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## 再現'
+- type: textarea
+  id: steps
+  attributes:
+    label: 再現手順
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: 期待する動作
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: 実際の動作
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## 補足'
+- type: textarea
+  id: environment
+  attributes:
+    label: その他の環境
+    placeholder: arm64, C->S, TLS
+- type: textarea
+  id: logs
+  attributes:
+    label: ログまたはスクリーンショット
+- type: markdown
+  attributes:
+    value: '---
+
+      ## 確認'
+- type: checkboxes
+  id: checks
+  attributes:
+    label: 確認
+    options:
+    - label: 既存の issue を検索しました。
+      required: true
+    - label: 秘密情報、トークン、個人データを含めていません。
+      required: true
+    - label: セキュリティ脆弱性の詳細を公開していません。
+      required: true

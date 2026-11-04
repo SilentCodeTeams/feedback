@@ -1,0 +1,127 @@
+name: Bug report
+description: Submit a program, service or protocol defect.
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: '> Do not report security vulnerabilities publicly. Email SilentStudio@feedback.email.cn.
+
+      >
+
+      > **Feedback language: English**'
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Basic information'
+- type: input
+  id: project
+  attributes:
+    label: Project
+    placeholder: NetTool ζ / project name or folder
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: Version or commit
+    placeholder: v0.1.0 or commit
+- type: dropdown
+  id: os
+  attributes:
+    label: Operating system
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - Other
+  validations:
+    required: true
+- type: input
+  id: os_version
+  attributes:
+    label: OS version
+    placeholder: macOS 15.1
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Impact'
+- type: dropdown
+  id: severity
+  attributes:
+    label: Severity
+    options:
+    - S1 - Critical
+    - S2 - High
+    - S3 - Medium
+    - S4 - Low
+  validations:
+    required: true
+- type: input
+  id: cvss
+  attributes:
+    label: CVSS vector or score (optional)
+    placeholder: CVSS:3.1/...
+- type: input
+  id: summary
+  attributes:
+    label: Summary
+    placeholder: Short description
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Reproduction'
+- type: textarea
+  id: steps
+  attributes:
+    label: Steps to reproduce
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: Expected behavior
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: Actual behavior
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Additional context'
+- type: textarea
+  id: environment
+  attributes:
+    label: Other environment
+    placeholder: arm64, C->S, TLS
+- type: textarea
+  id: logs
+  attributes:
+    label: Logs or screenshots
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Checklist'
+- type: checkboxes
+  id: checks
+  attributes:
+    label: Checklist
+    options:
+    - label: I searched existing issues.
+      required: true
+    - label: I did not include secrets, tokens or personal data.
+      required: true
+    - label: I did not disclose security vulnerability details publicly.
+      required: true

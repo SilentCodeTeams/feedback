@@ -1,0 +1,127 @@
+name: รายงานข้อบกพร่อง
+description: รายงานข้อบกพร่องของโปรแกรม บริการ หรือโปรโตคอล
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: '> อย่าเปิดเผยช่องโหว่ด้านความปลอดภัย อีเมล SilentStudio@feedback.email.cn
+
+      >
+
+      > **ภาษาที่ใช้ตอบกลับ: ไทย**'
+- type: markdown
+  attributes:
+    value: '---
+
+      ## ข้อมูลพื้นฐาน'
+- type: input
+  id: project
+  attributes:
+    label: โครงการ
+    placeholder: NetTool ζ / ชื่อโครงการหรือโฟลเดอร์
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: เวอร์ชันหรือ commit
+    placeholder: v0.1.0 หรือ commit
+- type: dropdown
+  id: os
+  attributes:
+    label: ระบบปฏิบัติการ
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - อื่นๆ
+  validations:
+    required: true
+- type: input
+  id: os_version
+  attributes:
+    label: เวอร์ชันระบบปฏิบัติการ
+    placeholder: macOS 15.1
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## ผลกระทบ'
+- type: dropdown
+  id: severity
+  attributes:
+    label: ความรุนแรง
+    options:
+    - S1 - รุนแรง
+    - S2 - สูง
+    - S3 - ปานกลาง
+    - S4 - ต่ำ
+  validations:
+    required: true
+- type: input
+  id: cvss
+  attributes:
+    label: เวกเตอร์หรือคะแนน CVSS (ไม่บังคับ)
+    placeholder: CVSS:3.1/...
+- type: input
+  id: summary
+  attributes:
+    label: สรุป
+    placeholder: คำอธิบายสั้น
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## การทำซ้ำ'
+- type: textarea
+  id: steps
+  attributes:
+    label: ขั้นตอนการทำซ้ำ
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: พฤติกรรมที่คาดหวัง
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: พฤติกรรมจริง
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## บริบทเพิ่มเติม'
+- type: textarea
+  id: environment
+  attributes:
+    label: สภาพแวดล้อมอื่น
+    placeholder: arm64, C->S, TLS
+- type: textarea
+  id: logs
+  attributes:
+    label: บันทึกหรือภาพหน้าจอ
+- type: markdown
+  attributes:
+    value: '---
+
+      ## การยืนยัน'
+- type: checkboxes
+  id: checks
+  attributes:
+    label: การยืนยัน
+    options:
+    - label: ฉันค้นหา issue ที่มีอยู่แล้ว
+      required: true
+    - label: ฉันไม่ได้ใส่ความลับ โทเค็น หรือข้อมูลส่วนบุคคล
+      required: true
+    - label: ฉันไม่ได้เปิดเผยรายละเอียดช่องโหว่ด้านความปลอดภัย
+      required: true

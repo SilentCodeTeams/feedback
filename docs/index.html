@@ -227,6 +227,13 @@ var TEMPLATES = {
   question: "question.yml"
 };
 
+function templateFor(key, lang) {
+  if (key === "bug") {
+    return "bug_report_" + lang.code + ".yml";
+  }
+  return TEMPLATES[key];
+}
+
 var LANGS = [
   {
     code: "zh-CN", name: "简体中文", dir: "ltr",
@@ -483,7 +490,7 @@ function showLanguage(code, instant) {
     var link = document.createElement("a");
     link.className = "card";
     link.style.setProperty("--i", i);
-    link.href = "https://github.com/SilentCodeTeams/feedback/issues/new?template=" + TEMPLATES[key];
+    link.href = "https://github.com/SilentCodeTeams/feedback/issues/new?template=" + templateFor(key, lang);
     var title = document.createElement("h3");
     var icon = document.createElement("span");
     icon.className = "card-icon";

@@ -1,0 +1,127 @@
+name: Hata raporu
+description: Program, hizmet veya protokol hatasını bildirin.
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: '> Güvenlik açıklarını herkese açık paylaşmayın. SilentStudio@feedback.email.cn adresine yazın.
+
+      >
+
+      > **Yanıt dili: Türkçe**'
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Temel bilgiler'
+- type: input
+  id: project
+  attributes:
+    label: Proje
+    placeholder: NetTool ζ / proje adı veya klasör
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: Sürüm veya commit
+    placeholder: v0.1.0 veya commit
+- type: dropdown
+  id: os
+  attributes:
+    label: İşletim sistemi
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - Diğer
+  validations:
+    required: true
+- type: input
+  id: os_version
+  attributes:
+    label: İşletim sistemi sürümü
+    placeholder: macOS 15.1
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Etki'
+- type: dropdown
+  id: severity
+  attributes:
+    label: Önem derecesi
+    options:
+    - S1 - Kritik
+    - S2 - Yüksek
+    - S3 - Orta
+    - S4 - Düşük
+  validations:
+    required: true
+- type: input
+  id: cvss
+  attributes:
+    label: CVSS vektörü veya puanı (isteğe bağlı)
+    placeholder: CVSS:3.1/...
+- type: input
+  id: summary
+  attributes:
+    label: Özet
+    placeholder: Kısa açıklama
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Yeniden üretim'
+- type: textarea
+  id: steps
+  attributes:
+    label: Yeniden üretme adımları
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: Beklenen davranış
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: Gerçek davranış
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Ek bağlam'
+- type: textarea
+  id: environment
+  attributes:
+    label: Diğer ortam
+    placeholder: arm64, C->S, TLS
+- type: textarea
+  id: logs
+  attributes:
+    label: Günlükler veya ekran görüntüleri
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Onay'
+- type: checkboxes
+  id: checks
+  attributes:
+    label: Onay
+    options:
+    - label: Mevcut issue'ları aradım.
+      required: true
+    - label: Gizli bilgi, token veya kişisel veri eklemedim.
+      required: true
+    - label: Güvenlik açığı ayrıntılarını herkese açık paylaşmadım.
+      required: true

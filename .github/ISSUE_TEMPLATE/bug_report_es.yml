@@ -1,0 +1,127 @@
+name: Informe de error
+description: Envía un defecto del programa, servicio o protocolo.
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: '> No publiques vulnerabilidades de seguridad. Escribe a SilentStudio@feedback.email.cn.
+
+      >
+
+      > **Idioma de respuesta: Español**'
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Información básica'
+- type: input
+  id: project
+  attributes:
+    label: Proyecto
+    placeholder: NetTool ζ / nombre o carpeta
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: Versión o commit
+    placeholder: v0.1.0 o commit
+- type: dropdown
+  id: os
+  attributes:
+    label: Sistema operativo
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - Otro
+  validations:
+    required: true
+- type: input
+  id: os_version
+  attributes:
+    label: Versión del sistema
+    placeholder: macOS 15.1
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Impacto'
+- type: dropdown
+  id: severity
+  attributes:
+    label: Gravedad
+    options:
+    - S1 - Crítica
+    - S2 - Alta
+    - S3 - Media
+    - S4 - Baja
+  validations:
+    required: true
+- type: input
+  id: cvss
+  attributes:
+    label: Vector o puntuación CVSS (opcional)
+    placeholder: CVSS:3.1/...
+- type: input
+  id: summary
+  attributes:
+    label: Resumen
+    placeholder: Descripción breve
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Reproducción'
+- type: textarea
+  id: steps
+  attributes:
+    label: Pasos para reproducir
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: Resultado esperado
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: Resultado real
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Contexto adicional'
+- type: textarea
+  id: environment
+  attributes:
+    label: Otro entorno
+    placeholder: arm64, C->S, TLS
+- type: textarea
+  id: logs
+  attributes:
+    label: Registros o capturas
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Confirmación'
+- type: checkboxes
+  id: checks
+  attributes:
+    label: Confirmación
+    options:
+    - label: He buscado issues existentes.
+      required: true
+    - label: No incluí secretos, tokens ni datos personales.
+      required: true
+    - label: No divulgué detalles de vulnerabilidades de seguridad públicamente.
+      required: true

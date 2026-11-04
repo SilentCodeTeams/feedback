@@ -1,0 +1,127 @@
+name: Laporan bug
+description: Laporkan cacat pada program, layanan, atau protokol.
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: '> Jangan publikasikan kerentanan keamanan. Kirim email ke SilentStudio@feedback.email.cn.
+
+      >
+
+      > **Bahasa respons: Bahasa Indonesia**'
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Informasi dasar'
+- type: input
+  id: project
+  attributes:
+    label: Proyek
+    placeholder: NetTool ζ / nama atau folder proyek
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: Versi atau commit
+    placeholder: v0.1.0 atau commit
+- type: dropdown
+  id: os
+  attributes:
+    label: Sistem operasi
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - Lainnya
+  validations:
+    required: true
+- type: input
+  id: os_version
+  attributes:
+    label: Versi sistem operasi
+    placeholder: macOS 15.1
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Dampak'
+- type: dropdown
+  id: severity
+  attributes:
+    label: Tingkat keparahan
+    options:
+    - S1 - Kritis
+    - S2 - Tinggi
+    - S3 - Sedang
+    - S4 - Rendah
+  validations:
+    required: true
+- type: input
+  id: cvss
+  attributes:
+    label: Vektor atau skor CVSS (opsional)
+    placeholder: CVSS:3.1/...
+- type: input
+  id: summary
+  attributes:
+    label: Ringkasan
+    placeholder: Deskripsi singkat
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Reproduksi'
+- type: textarea
+  id: steps
+  attributes:
+    label: Langkah reproduksi
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: Perilaku yang diharapkan
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: Perilaku aktual
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Konteks tambahan'
+- type: textarea
+  id: environment
+  attributes:
+    label: Lingkungan lain
+    placeholder: arm64, C->S, TLS
+- type: textarea
+  id: logs
+  attributes:
+    label: Log atau tangkapan layar
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Konfirmasi'
+- type: checkboxes
+  id: checks
+  attributes:
+    label: Konfirmasi
+    options:
+    - label: Saya mencari issue yang ada.
+      required: true
+    - label: Saya tidak menyertakan rahasia, token, atau data pribadi.
+      required: true
+    - label: Saya tidak mempublikasikan detail kerentanan keamanan.
+      required: true

@@ -54,6 +54,9 @@ body:
       label: 位置 / Location
       description: 文件、页面或字符串位置。
       placeholder: README.md 第 12 行
+  - type: markdown
+    attributes:
+      value: "---"
   - type: textarea
     id: current
     attributes:

@@ -1,0 +1,127 @@
+name: Сообщение об ошибке
+description: Сообщить о дефекте программы, сервиса или протокола.
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: '> Не публикуйте уязвимости безопасности. Напишите на SilentStudio@feedback.email.cn.
+
+      >
+
+      > **Язык ответа: Русский**'
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Основная информация'
+- type: input
+  id: project
+  attributes:
+    label: Проект
+    placeholder: NetTool ζ / название или папка
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: Версия или commit
+    placeholder: v0.1.0 или commit
+- type: dropdown
+  id: os
+  attributes:
+    label: Операционная система
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - Другое
+  validations:
+    required: true
+- type: input
+  id: os_version
+  attributes:
+    label: Версия ОС
+    placeholder: macOS 15.1
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Влияние'
+- type: dropdown
+  id: severity
+  attributes:
+    label: Серьёзность
+    options:
+    - S1 - Критическая
+    - S2 - Высокая
+    - S3 - Средняя
+    - S4 - Низкая
+  validations:
+    required: true
+- type: input
+  id: cvss
+  attributes:
+    label: Вектор или оценка CVSS (необязательно)
+    placeholder: CVSS:3.1/...
+- type: input
+  id: summary
+  attributes:
+    label: Краткое описание
+    placeholder: Краткое описание
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Воспроизведение'
+- type: textarea
+  id: steps
+  attributes:
+    label: Шаги воспроизведения
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: Ожидаемое поведение
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: Фактическое поведение
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Дополнительный контекст'
+- type: textarea
+  id: environment
+  attributes:
+    label: Другое окружение
+    placeholder: arm64, C->S, TLS
+- type: textarea
+  id: logs
+  attributes:
+    label: Логи или скриншоты
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Подтверждение'
+- type: checkboxes
+  id: checks
+  attributes:
+    label: Подтверждение
+    options:
+    - label: Я искал существующие issue.
+      required: true
+    - label: Я не добавлял секреты, токены или персональные данные.
+      required: true
+    - label: Я не раскрывал публично детали уязвимостей.
+      required: true

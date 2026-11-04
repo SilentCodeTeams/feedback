@@ -1,0 +1,127 @@
+name: 버그 보고
+description: 프로그램, 서비스 또는 프로토콜 결함을 보고합니다.
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: '> 보안 취약점을 공개하지 마세요. SilentStudio@feedback.email.cn으로 연락하세요.
+
+      >
+
+      > **응답 언어: 한국어**'
+- type: markdown
+  attributes:
+    value: '---
+
+      ## 기본 정보'
+- type: input
+  id: project
+  attributes:
+    label: 프로젝트
+    placeholder: NetTool ζ / 프로젝트 이름 또는 폴더
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: 버전 또는 commit
+    placeholder: v0.1.0 또는 commit
+- type: dropdown
+  id: os
+  attributes:
+    label: 운영체제
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - 기타
+  validations:
+    required: true
+- type: input
+  id: os_version
+  attributes:
+    label: OS 버전
+    placeholder: macOS 15.1
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## 영향'
+- type: dropdown
+  id: severity
+  attributes:
+    label: 심각도
+    options:
+    - S1 - 심각
+    - S2 - 높음
+    - S3 - 보통
+    - S4 - 낮음
+  validations:
+    required: true
+- type: input
+  id: cvss
+  attributes:
+    label: CVSS 벡터 또는 점수(선택)
+    placeholder: CVSS:3.1/...
+- type: input
+  id: summary
+  attributes:
+    label: 요약
+    placeholder: 짧은 설명
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## 재현'
+- type: textarea
+  id: steps
+  attributes:
+    label: 재현 단계
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: 기대 동작
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: 실제 동작
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## 추가 정보'
+- type: textarea
+  id: environment
+  attributes:
+    label: 기타 환경
+    placeholder: arm64, C->S, TLS
+- type: textarea
+  id: logs
+  attributes:
+    label: 로그 또는 스크린샷
+- type: markdown
+  attributes:
+    value: '---
+
+      ## 확인'
+- type: checkboxes
+  id: checks
+  attributes:
+    label: 확인
+    options:
+    - label: 기존 issue를 검색했습니다.
+      required: true
+    - label: 비밀 정보, 토큰 또는 개인 데이터를 포함하지 않았습니다.
+      required: true
+    - label: 보안 취약점 세부 정보를 공개하지 않았습니다.
+      required: true

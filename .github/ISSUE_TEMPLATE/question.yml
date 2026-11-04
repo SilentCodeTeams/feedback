@@ -44,6 +44,9 @@ body:
     id: version
     attributes:
       label: 版本或 commit / Version
+  - type: markdown
+    attributes:
+      value: "---"
   - type: textarea
     id: question
     attributes:

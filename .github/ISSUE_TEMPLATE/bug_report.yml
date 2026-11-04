@@ -66,6 +66,9 @@ body:
       placeholder: macOS 15.1
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: "---"
   - type: dropdown
     id: severity
     attributes:

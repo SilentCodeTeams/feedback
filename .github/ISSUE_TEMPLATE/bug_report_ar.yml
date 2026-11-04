@@ -1,0 +1,127 @@
+name: تقرير خطأ
+description: الإبلاغ عن خلل في البرنامج أو الخدمة أو البروتوكول.
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: '> لا تنشر ثغرات الأمان. راسل SilentStudio@feedback.email.cn.
+
+      >
+
+      > **لغة الرد: العربية**'
+- type: markdown
+  attributes:
+    value: '---
+
+      ## المعلومات الأساسية'
+- type: input
+  id: project
+  attributes:
+    label: المشروع
+    placeholder: NetTool ζ / اسم المشروع أو المجلد
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: الإصدار أو commit
+    placeholder: v0.1.0 أو commit
+- type: dropdown
+  id: os
+  attributes:
+    label: نظام التشغيل
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - أخرى
+  validations:
+    required: true
+- type: input
+  id: os_version
+  attributes:
+    label: إصدار نظام التشغيل
+    placeholder: macOS 15.1
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## التأثير'
+- type: dropdown
+  id: severity
+  attributes:
+    label: الخطورة
+    options:
+    - S1 - حرجة
+    - S2 - عالية
+    - S3 - متوسطة
+    - S4 - منخفضة
+  validations:
+    required: true
+- type: input
+  id: cvss
+  attributes:
+    label: متجه أو درجة CVSS (اختياري)
+    placeholder: CVSS:3.1/...
+- type: input
+  id: summary
+  attributes:
+    label: الملخص
+    placeholder: وصف قصير
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## إعادة الإنتاج'
+- type: textarea
+  id: steps
+  attributes:
+    label: خطوات إعادة الإنتاج
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: السلوك المتوقع
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: السلوك الفعلي
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## سياق إضافي'
+- type: textarea
+  id: environment
+  attributes:
+    label: بيئة أخرى
+    placeholder: arm64, C->S, TLS
+- type: textarea
+  id: logs
+  attributes:
+    label: السجلات أو لقطات الشاشة
+- type: markdown
+  attributes:
+    value: '---
+
+      ## التأكيد'
+- type: checkboxes
+  id: checks
+  attributes:
+    label: التأكيد
+    options:
+    - label: بحثت في issues الموجودة.
+      required: true
+    - label: لم أضمّن أسرارًا أو رموزًا أو بيانات شخصية.
+      required: true
+    - label: لم أفصح علنًا عن تفاصيل ثغرات الأمان.
+      required: true

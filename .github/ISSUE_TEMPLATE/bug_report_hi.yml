@@ -1,0 +1,127 @@
+name: बग रिपोर्ट
+description: प्रोग्राम, सेवा या प्रोटोकॉल की खराबी की रिपोर्ट करें।
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: '> सुरक्षा कमज़ोरियाँ सार्वजनिक न करें। SilentStudio@feedback.email.cn पर लिखें।
+
+      >
+
+      > **उत्तर की भाषा: हिन्दी**'
+- type: markdown
+  attributes:
+    value: '---
+
+      ## बुनियादी जानकारी'
+- type: input
+  id: project
+  attributes:
+    label: परियोजना
+    placeholder: NetTool ζ / परियोजना नाम या फ़ोल्डर
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: संस्करण या commit
+    placeholder: v0.1.0 या commit
+- type: dropdown
+  id: os
+  attributes:
+    label: ऑपरेटिंग सिस्टम
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - अन्य
+  validations:
+    required: true
+- type: input
+  id: os_version
+  attributes:
+    label: OS संस्करण
+    placeholder: macOS 15.1
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## प्रभाव'
+- type: dropdown
+  id: severity
+  attributes:
+    label: गंभीरता
+    options:
+    - S1 - गंभीर
+    - S2 - उच्च
+    - S3 - मध्यम
+    - S4 - निम्न
+  validations:
+    required: true
+- type: input
+  id: cvss
+  attributes:
+    label: CVSS वेक्टर या स्कोर (वैकल्पिक)
+    placeholder: CVSS:3.1/...
+- type: input
+  id: summary
+  attributes:
+    label: सारांश
+    placeholder: संक्षिप्त विवरण
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## पुनरुत्पादन'
+- type: textarea
+  id: steps
+  attributes:
+    label: पुनरुत्पादन के चरण
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: अपेक्षित व्यवहार
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: वास्तविक व्यवहार
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## अतिरिक्त संदर्भ'
+- type: textarea
+  id: environment
+  attributes:
+    label: अन्य वातावरण
+    placeholder: arm64, C->S, TLS
+- type: textarea
+  id: logs
+  attributes:
+    label: लॉग या स्क्रीनशॉट
+- type: markdown
+  attributes:
+    value: '---
+
+      ## पुष्टि'
+- type: checkboxes
+  id: checks
+  attributes:
+    label: पुष्टि
+    options:
+    - label: मैंने मौजूदा issues खोजे।
+      required: true
+    - label: मैंने रहस्य, टोकन या व्यक्तिगत डेटा शामिल नहीं किया।
+      required: true
+    - label: मैंने सुरक्षा कमज़ोरियों का विवरण सार्वजनिक नहीं किया।
+      required: true

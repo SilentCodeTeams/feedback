@@ -1,0 +1,127 @@
+name: Báo lỗi
+description: Báo cáo lỗi của chương trình, dịch vụ hoặc giao thức.
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: '> Không công bố lỗ hổng bảo mật. Gửi email đến SilentStudio@feedback.email.cn.
+
+      >
+
+      > **Ngôn ngữ phản hồi: Tiếng Việt**'
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Thông tin cơ bản'
+- type: input
+  id: project
+  attributes:
+    label: Dự án
+    placeholder: NetTool ζ / tên hoặc thư mục dự án
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: Phiên bản hoặc commit
+    placeholder: v0.1.0 hoặc commit
+- type: dropdown
+  id: os
+  attributes:
+    label: Hệ điều hành
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - Khác
+  validations:
+    required: true
+- type: input
+  id: os_version
+  attributes:
+    label: Phiên bản hệ điều hành
+    placeholder: macOS 15.1
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Ảnh hưởng'
+- type: dropdown
+  id: severity
+  attributes:
+    label: Mức độ nghiêm trọng
+    options:
+    - S1 - Nghiêm trọng
+    - S2 - Cao
+    - S3 - Trung bình
+    - S4 - Thấp
+  validations:
+    required: true
+- type: input
+  id: cvss
+  attributes:
+    label: Vectơ hoặc điểm CVSS (tùy chọn)
+    placeholder: CVSS:3.1/...
+- type: input
+  id: summary
+  attributes:
+    label: Tóm tắt
+    placeholder: Mô tả ngắn
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Tái hiện'
+- type: textarea
+  id: steps
+  attributes:
+    label: Các bước tái hiện
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: Hành vi mong đợi
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: Hành vi thực tế
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Ngữ cảnh bổ sung'
+- type: textarea
+  id: environment
+  attributes:
+    label: Môi trường khác
+    placeholder: arm64, C->S, TLS
+- type: textarea
+  id: logs
+  attributes:
+    label: Nhật ký hoặc ảnh chụp
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Xác nhận'
+- type: checkboxes
+  id: checks
+  attributes:
+    label: Xác nhận
+    options:
+    - label: Tôi đã tìm kiếm các issue hiện có.
+      required: true
+    - label: Tôi không bao gồm bí mật, token hoặc dữ liệu cá nhân.
+      required: true
+    - label: Tôi không công bố chi tiết lỗ hổng bảo mật.
+      required: true

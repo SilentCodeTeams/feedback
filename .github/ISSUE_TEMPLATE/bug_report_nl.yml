@@ -1,0 +1,127 @@
+name: Bugmelding
+description: Een defect in het programma, de dienst of het protocol melden.
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: '> Publiceer geen beveiligingskwetsbaarheden. Mail naar SilentStudio@feedback.email.cn.
+
+      >
+
+      > **Antwoordtaal: Nederlands**'
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Basisgegevens'
+- type: input
+  id: project
+  attributes:
+    label: Project
+    placeholder: NetTool ζ / projectnaam of map
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: Versie of commit
+    placeholder: v0.1.0 of commit
+- type: dropdown
+  id: os
+  attributes:
+    label: Besturingssysteem
+    options:
+    - macOS
+    - Windows
+    - Linux
+    - Overig
+  validations:
+    required: true
+- type: input
+  id: os_version
+  attributes:
+    label: Versie besturingssysteem
+    placeholder: macOS 15.1
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Impact'
+- type: dropdown
+  id: severity
+  attributes:
+    label: Ernst
+    options:
+    - S1 - Kritiek
+    - S2 - Hoog
+    - S3 - Gemiddeld
+    - S4 - Laag
+  validations:
+    required: true
+- type: input
+  id: cvss
+  attributes:
+    label: CVSS-vector of -score (optioneel)
+    placeholder: CVSS:3.1/...
+- type: input
+  id: summary
+  attributes:
+    label: Samenvatting
+    placeholder: Korte beschrijving
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Reproductie'
+- type: textarea
+  id: steps
+  attributes:
+    label: Stappen om te reproduceren
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: Verwacht gedrag
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: Werkelijk gedrag
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Aanvullende context'
+- type: textarea
+  id: environment
+  attributes:
+    label: Overige omgeving
+    placeholder: arm64, C->S, TLS
+- type: textarea
+  id: logs
+  attributes:
+    label: Logs of schermafbeeldingen
+- type: markdown
+  attributes:
+    value: '---
+
+      ## Bevestiging'
+- type: checkboxes
+  id: checks
+  attributes:
+    label: Bevestiging
+    options:
+    - label: Ik heb bestaande issues gezocht.
+      required: true
+    - label: Ik heb geen geheimen, tokens of persoonsgegevens toegevoegd.
+      required: true
+    - label: Ik heb geen details over beveiligingskwetsbaarheden gepubliceerd.
+      required: true
