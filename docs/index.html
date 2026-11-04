@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>SilentCodeTeams Feedback · Language first</title>
+<link rel="icon" href="assets/icons/globe.svg">
+<title>SilentCodeTeams Feedback · 语言入口</title>
 <style>
   :root {
     color-scheme: light dark;
@@ -43,7 +44,59 @@
   }
   h1 { margin: 0; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; }
   h2 { margin: 0; font-size: 20px; line-height: 1.3; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
   .subtitle { margin: 12px 0 0; max-width: 720px; color: var(--muted); font-size: 15px; }
+  .brand-icon, .card-icon {
+    display: inline-block;
+    background: currentColor;
+    -webkit-mask: var(--icon) center / contain no-repeat;
+    mask: var(--icon) center / contain no-repeat;
+  }
+  .brand-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+    vertical-align: -2px;
+    --icon: url("assets/icons/globe.svg");
+  }
+  .card-icon {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    color: var(--muted);
+    --icon: var(--card-icon);
+  }
+  .card:hover .card-icon { color: var(--accent); }
+  .progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    opacity: 0;
+    z-index: 100;
+    transition: width 260ms ease, opacity 160ms ease;
+    pointer-events: none;
+  }
+  .view { display: none; }
+  .view.is-active { display: block; animation: viewIn 300ms cubic-bezier(.2, .8, .2, 1) both; }
+  .view.is-leaving { display: block; animation: viewOut 170ms ease both; }
+  @keyframes viewIn {
+    from { opacity: 0; transform: translateX(18px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes viewOut {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(-18px); }
+  }
   .language-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
   .lang {
     appearance: none;
@@ -55,8 +108,13 @@
     font: inherit;
     font-size: 14px;
     cursor: pointer;
+    animation: fadeUp 260ms ease both;
+    animation-delay: calc(var(--i, 0) * 24ms);
+    transition: transform 160ms ease, border-color 160ms ease;
   }
-  .lang:hover { border-color: var(--accent); }
+  .lang:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .lang:active { transform: translateY(0); }
+  .lang.suggested { box-shadow: inset 0 0 0 2px var(--accent); }
   .lang:focus-visible, .card:focus-visible, button:focus-visible, a:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
@@ -66,7 +124,7 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 16px;
-    margin-top: 32px;
+    margin-top: 0;
   }
   #change {
     appearance: none;
@@ -79,8 +137,9 @@
     font-size: 13px;
     cursor: pointer;
     white-space: nowrap;
+    transition: transform 160ms ease, border-color 160ms ease;
   }
-  #change:hover { border-color: var(--accent); }
+  #change:hover { border-color: var(--accent); transform: translateY(-1px); }
   .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -97,9 +156,12 @@
     color: var(--text);
     padding: 16px;
     text-decoration: none;
+    animation: cardIn 300ms ease both;
+    animation-delay: calc(var(--i, 0) * 45ms);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
   }
-  .card:hover { border-color: var(--accent); }
-  .card h3 { grid-column: 1; margin: 0; font-size: 16px; line-height: 1.3; }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); }
+  .card h3 { grid-column: 1; display: flex; align-items: center; gap: 8px; margin: 0; font-size: 16px; line-height: 1.3; }
   .card p { grid-column: 1; margin: 0; color: var(--muted); font-size: 13px; }
   .arrow { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: var(--muted); font-size: 20px; }
   .note { margin: 18px 0 0; color: var(--muted); font-size: 13px; }
@@ -114,6 +176,10 @@
   .security a { color: var(--accent); }
   noscript { display: block; margin-top: 24px; color: var(--muted); }
   [hidden] { display: none !important; }
+  @media (prefers-reduced-motion: reduce) {
+    .lang, .card, .view { animation: none !important; transition: none !important; }
+    .lang:hover, .card:hover, #change:hover { transform: none; }
+  }
   @media (max-width: 640px) {
     main { padding: 28px 16px 48px; }
     h1 { font-size: 26px; }
@@ -122,29 +188,32 @@
 </style>
 </head>
 <body>
+<div id="progress" class="progress" aria-hidden="true"></div>
 <main>
-  <header>
-    <p class="eyebrow">SilentCodeTeams / feedback</p>
-    <h1>选择语言 / Choose your language</h1>
-    <p class="subtitle">先选择语言，再进入对应的反馈表单。<br>Choose a language first, then open the matching feedback form.</p>
-  </header>
+  <section id="picker-view" class="view is-active">
+    <header>
+      <p class="eyebrow"><span class="brand-icon" aria-hidden="true"></span>SilentCodeTeams / feedback</p>
+      <h1>选择语言</h1>
+      <p class="subtitle">先选择语言，再进入对应的反馈表单。</p>
+    </header>
 
-  <section id="languages" class="language-grid" aria-label="Languages"></section>
+    <section id="languages" class="language-grid" aria-label="Languages"></section>
+  </section>
 
-  <section id="content" hidden>
+  <section id="content" class="view" hidden>
     <div class="content-head">
       <div>
         <p class="eyebrow" id="current-language"></p>
-        <h2>选择反馈类型 / Choose a feedback type</h2>
+        <h2 id="choose-type">选择反馈类型</h2>
       </div>
-      <button id="change" type="button">更改语言 / Change language</button>
+      <button id="change" type="button">更改语言</button>
     </div>
     <div id="cards" class="cards"></div>
-    <p class="note">表单字段为中英双语；进入后请在第一项选择同一语言。<br>Forms are bilingual; select the same language in the first field.</p>
-    <p class="note"><a href="https://github.com/SilentCodeTeams/feedback/issues/new/choose">完整模板选择页 / Full template picker</a> · <a href="https://github.com/SilentCodeTeams/feedback#readme">反馈说明 / Feedback guide</a></p>
+    <p class="note"><span id="note-text">进入表单后请在第一项选择同一语言。</span></p>
+    <p class="note"><a id="picker-link" href="https://github.com/SilentCodeTeams/feedback/issues/new/choose">完整模板选择页</a> · <a id="guide-link" href="https://github.com/SilentCodeTeams/feedback#readme">反馈说明</a></p>
   </section>
 
-  <p class="security">安全漏洞请勿公开提交 / Do not report security vulnerabilities publicly: <a href="mailto:SilentStudio@feedback.email.cn">SilentStudio@feedback.email.cn</a></p>
+  <p class="security"><span id="security-text">安全漏洞请勿公开提交</span>: <a href="mailto:SilentStudio@feedback.email.cn">SilentStudio@feedback.email.cn</a></p>
   <noscript><p>请启用 JavaScript，或直接打开 <a href="https://github.com/SilentCodeTeams/feedback/issues/new/choose">完整模板选择页</a>。</p></noscript>
 </main>
 
@@ -312,11 +381,41 @@ var LANGS = [
   }
 ];
 
+var UI = {
+  "zh-CN": { chooseType: "选择反馈类型", change: "更改语言", note: "进入表单后请在第一项选择同一语言。", picker: "完整模板选择页", guide: "反馈说明", security: "安全漏洞请勿公开提交" },
+  "en": { chooseType: "Choose a feedback type", change: "Change language", note: "Select the same language in the first field.", picker: "Full template picker", guide: "Feedback guide", security: "Do not report security vulnerabilities publicly" },
+  "es": { chooseType: "Elige un tipo de comentario", change: "Cambiar idioma", note: "Selecciona el mismo idioma en el primer campo.", picker: "Selector completo de plantillas", guide: "Guía de comentarios", security: "No publiques vulnerabilidades de seguridad" },
+  "fr": { chooseType: "Choisissez un type de retour", change: "Changer de langue", note: "Sélectionnez la même langue dans le premier champ.", picker: "Sélecteur complet de modèles", guide: "Guide des retours", security: "Ne publiez pas de vulnérabilités de sécurité" },
+  "de": { chooseType: "Wähle eine Feedback-Art", change: "Sprache ändern", note: "Wähle im ersten Feld dieselbe Sprache.", picker: "Vollständige Vorlagenauswahl", guide: "Feedback-Leitfaden", security: "Veröffentliche keine Sicherheitslücken" },
+  "ru": { chooseType: "Выберите тип обратной связи", change: "Изменить язык", note: "Выберите тот же язык в первом поле.", picker: "Полный выбор шаблонов", guide: "Руководство по отзывам", security: "Не публикуйте уязвимости безопасности" },
+  "ja": { chooseType: "フィードバックの種類を選択", change: "言語を変更", note: "最初の項目で同じ言語を選択してください。", picker: "テンプレート選択ページ", guide: "フィードバックガイド", security: "セキュリティ脆弱性を公開しないでください" },
+  "ko": { chooseType: "피드백 유형 선택", change: "언어 변경", note: "첫 항목에서 같은 언어를 선택하세요.", picker: "전체 템플릿 선택", guide: "피드백 안내", security: "보안 취약점을 공개하지 마세요" },
+  "ar": { chooseType: "اختر نوع الملاحظات", change: "تغيير اللغة", note: "اختر اللغة نفسها في الحقل الأول.", picker: "اختيار القالب الكامل", guide: "دليل الملاحظات", security: "لا تنشر ثغرات الأمان علنًا" },
+  "pt": { chooseType: "Escolha um tipo de feedback", change: "Alterar idioma", note: "Selecione o mesmo idioma no primeiro campo.", picker: "Seletor completo de modelos", guide: "Guia de feedback", security: "Não publique vulnerabilidades de segurança" },
+  "it": { chooseType: "Scegli un tipo di feedback", change: "Cambia lingua", note: "Seleziona la stessa lingua nel primo campo.", picker: "Selettore completo dei modelli", guide: "Guida al feedback", security: "Non pubblicare vulnerabilità di sicurezza" },
+  "hi": { chooseType: "फ़ीडबैक प्रकार चुनें", change: "भाषा बदलें", note: "पहले फ़ील्ड में वही भाषा चुनें।", picker: "पूर्ण टेम्पलेट चयन", guide: "फ़ीडबैक मार्गदर्शिका", security: "सुरक्षा कमज़ोरियाँ सार्वजनिक न करें" },
+  "th": { chooseType: "เลือกประเภทความคิดเห็น", change: "เปลี่ยนภาษา", note: "โปรดเลือกภาษาเดียวกันในช่องแรก", picker: "หน้าเลือกเทมเพลตทั้งหมด", guide: "คู่มือความคิดเห็น", security: "อย่าเปิดเผยช่องโหว่ด้านความปลอดภัย" },
+  "vi": { chooseType: "Chọn loại phản hồi", change: "Đổi ngôn ngữ", note: "Chọn cùng ngôn ngữ ở trường đầu tiên.", picker: "Chọn mẫu đầy đủ", guide: "Hướng dẫn phản hồi", security: "Không công bố lỗ hổng bảo mật" },
+  "id": { chooseType: "Pilih jenis umpan balik", change: "Ubah bahasa", note: "Pilih bahasa yang sama di bidang pertama.", picker: "Pemilih templat lengkap", guide: "Panduan umpan balik", security: "Jangan publikasikan kerentanan keamanan" },
+  "tr": { chooseType: "Geri bildirim türünü seçin", change: "Dili değiştir", note: "İlk alanda aynı dili seçin.", picker: "Tam şablon seçici", guide: "Geri bildirim kılavuzu", security: "Güvenlik açıklarını herkese açık paylaşmayın" },
+  "nl": { chooseType: "Kies een soort feedback", change: "Taal wijzigen", note: "Kies dezelfde taal in het eerste veld.", picker: "Volledige sjablonenkiezer", guide: "Feedbackgids", security: "Publiceer geen beveiligingskwetsbaarheden" }
+};
+
 var grid = document.getElementById("languages");
+var pickerView = document.getElementById("picker-view");
 var content = document.getElementById("content");
 var cards = document.getElementById("cards");
 var currentLanguage = document.getElementById("current-language");
+var chooseType = document.getElementById("choose-type");
 var changeButton = document.getElementById("change");
+var noteText = document.getElementById("note-text");
+var pickerLink = document.getElementById("picker-link");
+var guideLink = document.getElementById("guide-link");
+var securityText = document.getElementById("security-text");
+var progress = document.getElementById("progress");
+var progressTimer = null;
+var currentView = pickerView;
+var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 var order = ["bug", "feature", "language", "question"];
 
 function findLanguage(code) {
@@ -328,39 +427,76 @@ function findLanguage(code) {
   return null;
 }
 
+function browserLanguage() {
+  var tags = navigator.languages || [navigator.language || ""];
+  for (var i = 0; i < tags.length; i++) {
+    var base = String(tags[i]).toLowerCase().split("-")[0];
+    for (var j = 0; j < LANGS.length; j++) {
+      if (LANGS[j].code.toLowerCase().split("-")[0] === base) {
+        return LANGS[j].code;
+      }
+    }
+  }
+  return "";
+}
+
 function renderLanguages() {
+  var suggested = browserLanguage();
   for (var i = 0; i < LANGS.length; i++) {
-    (function (lang) {
+    (function (lang, index) {
       var button = document.createElement("button");
       button.type = "button";
       button.className = "lang";
       button.textContent = lang.name;
-      button.addEventListener("click", function () { showLanguage(lang.code); });
+      button.style.setProperty("--i", index);
+      if (lang.code === suggested) {
+        button.classList.add("suggested");
+      }
+      button.addEventListener("click", function () {
+        if (window.location.hash === "#" + lang.code) {
+          route(false);
+        } else {
+          window.location.hash = lang.code;
+        }
+      });
       grid.appendChild(button);
-    })(LANGS[i]);
+    })(LANGS[i], i);
   }
 }
 
-function showLanguage(code) {
+function showLanguage(code, instant) {
   var lang = findLanguage(code);
   if (!lang) {
-    showPicker();
+    showPicker(instant);
     return;
   }
+  var ui = UI[lang.code] || UI.en;
   document.documentElement.lang = lang.code;
   document.documentElement.dir = lang.dir;
+  document.title = lang.name + " · SilentCodeTeams Feedback";
   currentLanguage.textContent = lang.name;
-  grid.hidden = true;
-  content.hidden = false;
+  chooseType.textContent = ui.chooseType;
+  changeButton.textContent = ui.change;
+  noteText.textContent = ui.note;
+  pickerLink.textContent = ui.picker;
+  guideLink.textContent = ui.guide;
+  securityText.textContent = ui.security;
   cards.textContent = "";
   for (var i = 0; i < order.length; i++) {
     var key = order[i];
     var item = lang.categories[key];
     var link = document.createElement("a");
     link.className = "card";
+    link.style.setProperty("--i", i);
     link.href = "https://github.com/SilentCodeTeams/feedback/issues/new?template=" + TEMPLATES[key];
     var title = document.createElement("h3");
-    title.textContent = item.title;
+    var icon = document.createElement("span");
+    icon.className = "card-icon";
+    icon.style.setProperty("--card-icon", "url(assets/icons/" + key + ".svg)");
+    var titleText = document.createElement("span");
+    titleText.textContent = item.title;
+    title.appendChild(icon);
+    title.appendChild(titleText);
     var desc = document.createElement("p");
     desc.textContent = item.desc;
     var arrow = document.createElement("span");
@@ -371,39 +507,101 @@ function showLanguage(code) {
     link.appendChild(arrow);
     cards.appendChild(link);
   }
-  if (window.location.hash !== "#" + code) {
-    history.replaceState(null, "", window.location.pathname + window.location.search + "#" + code);
-  }
-  window.scrollTo(0, 0);
+  switchView(content, instant);
 }
 
-function showPicker() {
+function showPicker(instant) {
+  var ui = UI["zh-CN"];
   document.documentElement.lang = "zh-CN";
   document.documentElement.dir = "ltr";
-  grid.hidden = false;
-  content.hidden = true;
-  if (window.location.hash) {
-    history.replaceState(null, "", window.location.pathname + window.location.search);
+  document.title = "SilentCodeTeams Feedback · 语言入口";
+  chooseType.textContent = ui.chooseType;
+  changeButton.textContent = ui.change;
+  noteText.textContent = ui.note;
+  pickerLink.textContent = ui.picker;
+  guideLink.textContent = ui.guide;
+  securityText.textContent = ui.security;
+  switchView(pickerView, instant);
+}
+
+function switchView(next, instant) {
+  if (next === currentView) {
+    return;
+  }
+  var current = currentView;
+  currentView = next;
+  if (instant || prefersReducedMotion) {
+    current.classList.remove("is-active", "is-leaving");
+    current.hidden = true;
+    next.hidden = false;
+    next.classList.add("is-active");
+    window.scrollTo(0, 0);
+    return;
+  }
+  startLoading();
+  current.classList.remove("is-active");
+  current.classList.add("is-leaving");
+  setTimeout(function () {
+    current.classList.remove("is-leaving");
+    current.hidden = true;
+    next.hidden = false;
+    next.classList.add("is-active");
+    finishLoading();
+    window.scrollTo(0, 0);
+  }, 170);
+}
+
+function startLoading() {
+  if (!progress) {
+    return;
+  }
+  if (progressTimer) {
+    clearTimeout(progressTimer);
+    progressTimer = null;
+  }
+  progress.style.transition = "none";
+  progress.style.width = "0%";
+  progress.style.opacity = "1";
+  progress.offsetWidth;
+  progress.style.transition = "width 260ms ease, opacity 160ms ease";
+  progress.style.width = "68%";
+}
+
+function finishLoading() {
+  if (!progress) {
+    return;
+  }
+  progress.style.width = "100%";
+  progressTimer = setTimeout(function () {
+    progress.style.opacity = "0";
+    progressTimer = setTimeout(function () {
+      progress.style.width = "0%";
+    }, 180);
+  }, 160);
+}
+
+function route(instant) {
+  var code = window.location.hash.replace("#", "");
+  if (code) {
+    showLanguage(code, instant);
+  } else {
+    showPicker(instant);
   }
 }
 
-changeButton.addEventListener("click", showPicker);
-window.addEventListener("hashchange", function () {
-  var code = window.location.hash.replace("#", "");
-  if (code) {
-    showLanguage(code);
+changeButton.addEventListener("click", function () {
+  if (window.location.hash) {
+    window.location.hash = "";
   } else {
-    showPicker();
+    route(false);
   }
+});
+window.addEventListener("hashchange", function () {
+  route(false);
 });
 
 renderLanguages();
-var initial = window.location.hash.replace("#", "");
-if (initial) {
-  showLanguage(initial);
-} else {
-  showPicker();
-}
+route(true);
 </script>
 </body>
 </html>
