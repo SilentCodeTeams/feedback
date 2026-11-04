@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "projects": [
+    {
+      "name": "Nazu&Ko",
+      "slug": "nazu-and-ko",
+      "description": "Rust network protocol analysis and authorized security testing core",
+      "status": "active",
+      "order": 10,
+      "path": "Nazu-and-Ko",
+      "categories": [
+        "bug",
+        "feature",
+        "language",
+        "question"
+      ]
+    }
+  ]
+}

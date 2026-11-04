@@ -142,6 +142,33 @@
     transition: transform 160ms ease, border-color 160ms ease;
   }
   #change:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .project-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .project-row label {
+    color: var(--muted);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .project-row select {
+    appearance: none;
+    min-width: 220px;
+    max-width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--card);
+    color: var(--text);
+    padding: 8px 10px;
+    font: inherit;
+    font-size: 13px;
+  }
+  .project-row select:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
   .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -209,6 +236,10 @@
         <h2 id="choose-type">选择反馈类型</h2>
       </div>
       <button id="change" type="button">更改语言</button>
+    </div>
+    <div id="project-row" class="project-row" hidden>
+      <label for="project-select" id="project-label">项目</label>
+      <select id="project-select"></select>
     </div>
     <div id="cards" class="cards"></div>
     <p class="note"><span id="note-text">进入表单后请在第一项选择同一语言。</span></p>
@@ -421,6 +452,11 @@ var noteText = document.getElementById("note-text");
 var pickerLink = document.getElementById("picker-link");
 var guideLink = document.getElementById("guide-link");
 var securityText = document.getElementById("security-text");
+var projectRow = document.getElementById("project-row");
+var projectSelect = document.getElementById("project-select");
+var projects = [];
+var selectedProject = null;
+var currentLanguageCode = "";
 var progress = document.getElementById("progress");
 var progressTimer = null;
 var currentView = pickerView;
@@ -449,6 +485,57 @@ function browserLanguage() {
   return "";
 }
 
+function buildIssueUrl(key, lang) {
+  var url = "https://github.com/SilentCodeTeams/feedback/issues/new?template=" + encodeURIComponent(templateFor(key, lang));
+  if (selectedProject) {
+    url += "&title=" + encodeURIComponent("[" + selectedProject.name + "] ");
+  }
+  return url;
+}
+
+function loadProjects() {
+  fetch("projects.json", { cache: "no-store" })
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("projects.json " + response.status);
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      projects = Array.isArray(data.projects) ? data.projects : [];
+      if (!projects.length) {
+        return;
+      }
+      var all = document.createElement("option");
+      all.value = "";
+      all.textContent = "全部项目 / All projects";
+      projectSelect.appendChild(all);
+      for (var i = 0; i < projects.length; i++) {
+        var option = document.createElement("option");
+        option.value = projects[i].slug;
+        option.textContent = projects[i].name;
+        projectSelect.appendChild(option);
+      }
+      projectRow.hidden = false;
+    })
+    .catch(function () {
+      projectRow.hidden = true;
+    });
+}
+
+projectSelect.addEventListener("change", function () {
+  selectedProject = null;
+  for (var i = 0; i < projects.length; i++) {
+    if (projects[i].slug === projectSelect.value) {
+      selectedProject = projects[i];
+      break;
+    }
+  }
+  if (currentLanguageCode) {
+    showLanguage(currentLanguageCode, true);
+  }
+});
+
 function renderLanguages() {
   var suggested = browserLanguage();
   for (var i = 0; i < LANGS.length; i++) {
@@ -476,6 +563,7 @@ function showLanguage(code, instant) {
   document.documentElement.lang = lang.code;
   document.documentElement.dir = lang.dir;
   document.title = lang.name + " · SilentCodeTeams Feedback";
+  currentLanguageCode = lang.code;
   currentLanguage.textContent = lang.name;
   chooseType.textContent = ui.chooseType;
   changeButton.textContent = ui.change;
@@ -490,7 +578,7 @@ function showLanguage(code, instant) {
     var link = document.createElement("a");
     link.className = "card";
     link.style.setProperty("--i", i);
-    link.href = "https://github.com/SilentCodeTeams/feedback/issues/new?template=" + templateFor(key, lang);
+    link.href = buildIssueUrl(key, lang);
     var title = document.createElement("h3");
     var icon = document.createElement("span");
     icon.className = "card-icon";
@@ -603,6 +691,7 @@ window.addEventListener("hashchange", function () {
 });
 
 renderLanguages();
+loadProjects();
 route(true);
 </script>
 </body>
