@@ -6,7 +6,6 @@
 
 # SilentCodeTeams Feedback
 
-
 SilentCodeTeams에 대한 피드백 창구입니다. 버그 보고, 기능 제안, 사용 질문, 프로젝트 문의를 받습니다.
 
 **[피드백 입구](https://silentcodeteams.github.io/feedback/)** — 여기를 클릭하여 피드백을 보내세요.

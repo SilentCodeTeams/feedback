@@ -6,7 +6,6 @@
 
 # SilentCodeTeams Feedback
 
-
 SilentCodeTeams へのフィードバック窓口です。不具合報告、機能要望、使い方の質問、プロジェクトに関する問い合わせを受け付けます。
 
 **[フィードバック入口](https://silentcodeteams.github.io/feedback/)** — ここをクリックしてフィードバックを送信してください。

@@ -6,7 +6,6 @@ Bahasa Indonesia · [简体中文](../README.md) · [English](README.en.md) · [
 
 # SilentCodeTeams Feedback
 
-
 Pintu masuk umpan balik utama SilentCodeTeams: laporan bug, permintaan fitur, pertanyaan penggunaan, dan pertanyaan tentang proyek.
 
 **[Pintu masuk umpan balik](https://silentcodeteams.github.io/feedback/)** — Klik di sini untuk mengirim umpan balik.

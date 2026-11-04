@@ -6,7 +6,6 @@
 
 # SilentCodeTeams Feedback
 
-
 المركز المركزي لملاحظات SilentCodeTeams: تقارير الأخطاء، وطلبات الميزات، وأسئلة الاستخدام، والاستفسارات حول المشاريع.
 
 **[مدخل الملاحظات](https://silentcodeteams.github.io/feedback/)** — انقر هنا لإرسال ملاحظاتك.

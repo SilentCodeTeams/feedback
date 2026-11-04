@@ -6,7 +6,6 @@ Italiano · [简体中文](../README.md) · [English](README.en.md) · [Español
 
 # SilentCodeTeams Feedback
 
-
 Punto centrale di feedback per SilentCodeTeams: segnalazioni di bug, richieste di funzionalità, domande d'uso e richieste sui progetti.
 
 **[Ingresso feedback](https://silentcodeteams.github.io/feedback/)** — Clicca qui per inviare feedback.

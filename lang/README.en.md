@@ -4,9 +4,7 @@ English · [简体中文](../README.md) · [Español](README.es.md) · [Françai
 
 </div>
 
-
 # SilentCodeTeams Feedback
-
 
 The central feedback entry for SilentCodeTeams: bug reports, feature requests, usage questions and project inquiries.
 

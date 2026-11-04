@@ -6,7 +6,6 @@
 
 # SilentCodeTeams Feedback
 
-
 SilentCodeTeams के लिए केंद्रीय फ़ीडबैक प्रवेश: बग रिपोर्ट, फ़ीचर अनुरोध, उपयोग संबंधी प्रश्न और परियोजना संबंधी पूछताछ।
 
 **[फ़ीडबैक प्रवेश](https://silentcodeteams.github.io/feedback/)** — फ़ीडबैक भेजने के लिए यहाँ क्लिक करें।
