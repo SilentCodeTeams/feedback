@@ -33,22 +33,14 @@ body:
         - Nederlands
     validations:
       required: true
-  - type: dropdown
+  - type: input
     id: project
     attributes:
       label: 项目 / Project
-      description: 选择已登记项目；未列出请选“其他”并在下一项填写。
-      options:
-        - NetTool ζ
-        - 其他 / Not listed
+      description: 已登记项目：NetTool ζ。未登记项目请直接填写项目名或 feedback 目录名。
+      placeholder: NetTool ζ 或项目名/目录名
     validations:
       required: true
-  - type: input
-    id: project_other
-    attributes:
-      label: 其他项目 / Other project
-      description: 如果上方选择“其他”，请填写项目名或 feedback 目录名；否则可留空。
-      placeholder: 项目名或目录名
   - type: input
     id: version
     attributes:
