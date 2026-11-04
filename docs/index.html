@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>SilentCodeTeams Feedback · Language first</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f6f8fa;
+    --card: #ffffff;
+    --text: #1f2328;
+    --muted: #59636e;
+    --border: #d1d9e0;
+    --accent: #0969da;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1117;
+      --card: #151b23;
+      --text: #f0f6fc;
+      --muted: #9198a1;
+      --border: #3d444d;
+      --accent: #4493f8;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  main { max-width: 980px; margin: 0 auto; padding: 48px 24px 64px; }
+  .eyebrow {
+    margin: 0 0 6px;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  h1 { margin: 0; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; }
+  h2 { margin: 0; font-size: 20px; line-height: 1.3; }
+  .subtitle { margin: 12px 0 0; max-width: 720px; color: var(--muted); font-size: 15px; }
+  .language-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .lang {
+    appearance: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--card);
+    color: var(--text);
+    padding: 9px 13px;
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .lang:hover { border-color: var(--accent); }
+  .lang:focus-visible, .card:focus-visible, button:focus-visible, a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .content-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  #change {
+    appearance: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--card);
+    color: var(--text);
+    padding: 8px 12px;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  #change:hover { border-color: var(--accent); }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--text);
+    padding: 16px;
+    text-decoration: none;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card h3 { grid-column: 1; margin: 0; font-size: 16px; line-height: 1.3; }
+  .card p { grid-column: 1; margin: 0; color: var(--muted); font-size: 13px; }
+  .arrow { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: var(--muted); font-size: 20px; }
+  .note { margin: 18px 0 0; color: var(--muted); font-size: 13px; }
+  .note a { color: var(--accent); }
+  .security {
+    margin: 36px 0 0;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .security a { color: var(--accent); }
+  noscript { display: block; margin-top: 24px; color: var(--muted); }
+  [hidden] { display: none !important; }
+  @media (max-width: 640px) {
+    main { padding: 28px 16px 48px; }
+    h1 { font-size: 26px; }
+    .content-head { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">SilentCodeTeams / feedback</p>
+    <h1>选择语言 / Choose your language</h1>
+    <p class="subtitle">先选择语言，再进入对应的反馈表单。<br>Choose a language first, then open the matching feedback form.</p>
+  </header>
+
+  <section id="languages" class="language-grid" aria-label="Languages"></section>
+
+  <section id="content" hidden>
+    <div class="content-head">
+      <div>
+        <p class="eyebrow" id="current-language"></p>
+        <h2>选择反馈类型 / Choose a feedback type</h2>
+      </div>
+      <button id="change" type="button">更改语言 / Change language</button>
+    </div>
+    <div id="cards" class="cards"></div>
+    <p class="note">表单字段为中英双语；进入后请在第一项选择同一语言。<br>Forms are bilingual; select the same language in the first field.</p>
+    <p class="note"><a href="https://github.com/SilentCodeTeams/feedback/issues/new/choose">完整模板选择页 / Full template picker</a> · <a href="https://github.com/SilentCodeTeams/feedback#readme">反馈说明 / Feedback guide</a></p>
+  </section>
+
+  <p class="security">安全漏洞请勿公开提交 / Do not report security vulnerabilities publicly: <a href="mailto:SilentStudio@feedback.email.cn">SilentStudio@feedback.email.cn</a></p>
+  <noscript><p>请启用 JavaScript，或直接打开 <a href="https://github.com/SilentCodeTeams/feedback/issues/new/choose">完整模板选择页</a>。</p></noscript>
+</main>
+
+<script>
+var TEMPLATES = {
+  bug: "bug_report.yml",
+  feature: "feature_request.yml",
+  language: "language.yml",
+  question: "question.yml"
+};
+
+var LANGS = [
+  {
+    code: "zh-CN", name: "简体中文", dir: "ltr",
+    categories: {
+      bug: { title: "缺陷报告", desc: "程序、服务或协议解析问题" },
+      feature: { title: "功能建议", desc: "新功能、改进或工作流建议" },
+      language: { title: "语言与翻译", desc: "翻译、术语或本地化问题" },
+      question: { title: "使用问题", desc: "使用方法、配置或兼容性" }
+    }
+  },
+  {
+    code: "en", name: "English", dir: "ltr",
+    categories: {
+      bug: { title: "Bug report", desc: "Program, service or protocol issues" },
+      feature: { title: "Feature request", desc: "New features, improvements or workflows" },
+      language: { title: "Language", desc: "Translation, terminology or localization" },
+      question: { title: "Question", desc: "Usage, configuration or compatibility" }
+    }
+  },
+  {
+    code: "es", name: "Español", dir: "ltr",
+    categories: {
+      bug: { title: "Informe de error", desc: "Problemas del programa, servicio o protocolo" },
+      feature: { title: "Solicitud de función", desc: "Nuevas funciones, mejoras o flujos" },
+      language: { title: "Idioma", desc: "Traducción, terminología o localización" },
+      question: { title: "Pregunta", desc: "Uso, configuración o compatibilidad" }
+    }
+  },
+  {
+    code: "fr", name: "Français", dir: "ltr",
+    categories: {
+      bug: { title: "Rapport de bug", desc: "Problèmes de programme, service ou protocole" },
+      feature: { title: "Demande de fonctionnalité", desc: "Nouvelles fonctions, améliorations ou flux" },
+      language: { title: "Langue", desc: "Traduction, terminologie ou localisation" },
+      question: { title: "Question", desc: "Utilisation, configuration ou compatibilité" }
+    }
+  },
+  {
+    code: "de", name: "Deutsch", dir: "ltr",
+    categories: {
+      bug: { title: "Fehlerbericht", desc: "Probleme mit Programm, Dienst oder Protokoll" },
+      feature: { title: "Funktionswunsch", desc: "Neue Funktionen, Verbesserungen oder Abläufe" },
+      language: { title: "Sprache", desc: "Übersetzung, Terminologie oder Lokalisierung" },
+      question: { title: "Frage", desc: "Nutzung, Konfiguration oder Kompatibilität" }
+    }
+  },
+  {
+    code: "ru", name: "Русский", dir: "ltr",
+    categories: {
+      bug: { title: "Сообщение об ошибке", desc: "Проблемы программы, сервиса или протокола" },
+      feature: { title: "Предложение функции", desc: "Новые функции, улучшения или сценарии" },
+      language: { title: "Язык", desc: "Перевод, терминология или локализация" },
+      question: { title: "Вопрос", desc: "Использование, настройка или совместимость" }
+    }
+  },
+  {
+    code: "ja", name: "日本語", dir: "ltr",
+    categories: {
+      bug: { title: "不具合報告", desc: "プログラム、サービス、プロトコルの問題" },
+      feature: { title: "機能要望", desc: "新機能、改善、ワークフローの提案" },
+      language: { title: "言語", desc: "翻訳、用語、ローカライズ" },
+      question: { title: "質問", desc: "使い方、設定、互換性" }
+    }
+  },
+  {
+    code: "ko", name: "한국어", dir: "ltr",
+    categories: {
+      bug: { title: "버그 보고", desc: "프로그램, 서비스 또는 프로토콜 문제" },
+      feature: { title: "기능 제안", desc: "새 기능, 개선 또는 워크플로 제안" },
+      language: { title: "언어", desc: "번역, 용어 또는 현지화" },
+      question: { title: "질문", desc: "사용법, 설정 또는 호환성" }
+    }
+  },
+  {
+    code: "ar", name: "العربية", dir: "rtl",
+    categories: {
+      bug: { title: "تقرير خطأ", desc: "مشكلات البرنامج أو الخدمة أو البروتوكول" },
+      feature: { title: "طلب ميزة", desc: "ميزات أو تحسينات أو سير عمل جديد" },
+      language: { title: "اللغة", desc: "الترجمة أو المصطلحات أو التعريب" },
+      question: { title: "سؤال", desc: "الاستخدام أو التكوين أو التوافق" }
+    }
+  },
+  {
+    code: "pt", name: "Português", dir: "ltr",
+    categories: {
+      bug: { title: "Relatório de bug", desc: "Problemas no programa, serviço ou protocolo" },
+      feature: { title: "Pedido de recurso", desc: "Novos recursos, melhorias ou fluxos" },
+      language: { title: "Idioma", desc: "Tradução, terminologia ou localização" },
+      question: { title: "Pergunta", desc: "Uso, configuração ou compatibilidade" }
+    }
+  },
+  {
+    code: "it", name: "Italiano", dir: "ltr",
+    categories: {
+      bug: { title: "Segnalazione bug", desc: "Problemi di programma, servizio o protocollo" },
+      feature: { title: "Richiesta funzionalità", desc: "Nuove funzioni, miglioramenti o flussi" },
+      language: { title: "Lingua", desc: "Traduzione, terminologia o localizzazione" },
+      question: { title: "Domanda", desc: "Uso, configurazione o compatibilità" }
+    }
+  },
+  {
+    code: "hi", name: "हिन्दी", dir: "ltr",
+    categories: {
+      bug: { title: "बग रिपोर्ट", desc: "प्रोग्राम, सेवा या प्रोटोकॉल की समस्याएँ" },
+      feature: { title: "फ़ीचर अनुरोध", desc: "नई सुविधाएँ, सुधार या वर्कफ़्लो" },
+      language: { title: "भाषा", desc: "अनुवाद, शब्दावली या स्थानीयकरण" },
+      question: { title: "प्रश्न", desc: "उपयोग, कॉन्फ़िगरेशन या संगतता" }
+    }
+  },
+  {
+    code: "th", name: "ไทย", dir: "ltr",
+    categories: {
+      bug: { title: "รายงานข้อบกพร่อง", desc: "ปัญหาโปรแกรม บริการ หรือโปรโตคอล" },
+      feature: { title: "คำขอฟีเจอร์", desc: "ฟีเจอร์ใหม่ การปรับปรุง หรือเวิร์กโฟลว์" },
+      language: { title: "ภาษา", desc: "การแปล คำศัพท์ หรือการรองรับภาษา" },
+      question: { title: "คำถาม", desc: "การใช้งาน การตั้งค่า หรือความเข้ากันได้" }
+    }
+  },
+  {
+    code: "vi", name: "Tiếng Việt", dir: "ltr",
+    categories: {
+      bug: { title: "Báo lỗi", desc: "Vấn đề chương trình, dịch vụ hoặc giao thức" },
+      feature: { title: "Đề xuất tính năng", desc: "Tính năng mới, cải tiến hoặc quy trình" },
+      language: { title: "Ngôn ngữ", desc: "Dịch, thuật ngữ hoặc bản địa hóa" },
+      question: { title: "Câu hỏi", desc: "Cách dùng, cấu hình hoặc tương thích" }
+    }
+  },
+  {
+    code: "id", name: "Bahasa Indonesia", dir: "ltr",
+    categories: {
+      bug: { title: "Laporan bug", desc: "Masalah program, layanan, atau protokol" },
+      feature: { title: "Permintaan fitur", desc: "Fitur baru, peningkatan, atau alur kerja" },
+      language: { title: "Bahasa", desc: "Terjemahan, terminologi, atau lokalisasi" },
+      question: { title: "Pertanyaan", desc: "Penggunaan, konfigurasi, atau kompatibilitas" }
+    }
+  },
+  {
+    code: "tr", name: "Türkçe", dir: "ltr",
+    categories: {
+      bug: { title: "Hata raporu", desc: "Program, hizmet veya protokol sorunları" },
+      feature: { title: "Özellik isteği", desc: "Yeni özellikler, iyileştirmeler veya iş akışları" },
+      language: { title: "Dil", desc: "Çeviri, terminoloji veya yerelleştirme" },
+      question: { title: "Soru", desc: "Kullanım, yapılandırma veya uyumluluk" }
+    }
+  },
+  {
+    code: "nl", name: "Nederlands", dir: "ltr",
+    categories: {
+      bug: { title: "Bugmelding", desc: "Problemen met programma, dienst of protocol" },
+      feature: { title: "Functieverzoek", desc: "Nieuwe functies, verbeteringen of workflows" },
+      language: { title: "Taal", desc: "Vertaling, terminologie of lokalisatie" },
+      question: { title: "Vraag", desc: "Gebruik, configuratie of compatibiliteit" }
+    }
+  }
+];
+
+var grid = document.getElementById("languages");
+var content = document.getElementById("content");
+var cards = document.getElementById("cards");
+var currentLanguage = document.getElementById("current-language");
+var changeButton = document.getElementById("change");
+var order = ["bug", "feature", "language", "question"];
+
+function findLanguage(code) {
+  for (var i = 0; i < LANGS.length; i++) {
+    if (LANGS[i].code === code) {
+      return LANGS[i];
+    }
+  }
+  return null;
+}
+
+function renderLanguages() {
+  for (var i = 0; i < LANGS.length; i++) {
+    (function (lang) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "lang";
+      button.textContent = lang.name;
+      button.addEventListener("click", function () { showLanguage(lang.code); });
+      grid.appendChild(button);
+    })(LANGS[i]);
+  }
+}
+
+function showLanguage(code) {
+  var lang = findLanguage(code);
+  if (!lang) {
+    showPicker();
+    return;
+  }
+  document.documentElement.lang = lang.code;
+  document.documentElement.dir = lang.dir;
+  currentLanguage.textContent = lang.name;
+  grid.hidden = true;
+  content.hidden = false;
+  cards.textContent = "";
+  for (var i = 0; i < order.length; i++) {
+    var key = order[i];
+    var item = lang.categories[key];
+    var link = document.createElement("a");
+    link.className = "card";
+    link.href = "https://github.com/SilentCodeTeams/feedback/issues/new?template=" + TEMPLATES[key];
+    var title = document.createElement("h3");
+    title.textContent = item.title;
+    var desc = document.createElement("p");
+    desc.textContent = item.desc;
+    var arrow = document.createElement("span");
+    arrow.className = "arrow";
+    arrow.textContent = lang.dir === "rtl" ? "←" : "→";
+    link.appendChild(title);
+    link.appendChild(desc);
+    link.appendChild(arrow);
+    cards.appendChild(link);
+  }
+  if (window.location.hash !== "#" + code) {
+    history.replaceState(null, "", window.location.pathname + window.location.search + "#" + code);
+  }
+  window.scrollTo(0, 0);
+}
+
+function showPicker() {
+  document.documentElement.lang = "zh-CN";
+  document.documentElement.dir = "ltr";
+  grid.hidden = false;
+  content.hidden = true;
+  if (window.location.hash) {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }
+}
+
+changeButton.addEventListener("click", showPicker);
+window.addEventListener("hashchange", function () {
+  var code = window.location.hash.replace("#", "");
+  if (code) {
+    showLanguage(code);
+  } else {
+    showPicker();
+  }
+});
+
+renderLanguages();
+var initial = window.location.hash.replace("#", "");
+if (initial) {
+  showLanguage(initial);
+} else {
+  showPicker();
+}
+</script>
+</body>
+</html>
