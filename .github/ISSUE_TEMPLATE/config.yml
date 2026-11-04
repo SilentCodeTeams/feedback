@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 安全漏洞私下报告 / Security report
+    url: https://github.com/SilentCodeTeams/feedback#readme
+    about: 请勿在公开 issue 中披露安全漏洞；请通过 README 中的安全邮箱联系。
+  - name: 反馈说明 / Feedback guide
+    url: https://github.com/SilentCodeTeams/feedback#readme
+    about: 查看反馈范围、项目目录与提交路径。

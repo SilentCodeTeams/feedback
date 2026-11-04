@@ -1,0 +1,45 @@
+name: 使用问题 / Question
+description: 询问使用方法、配置、兼容性或项目信息。
+title: "[Question] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先搜索已有 issue 和 README。安全漏洞请勿公开提交。
+  - type: input
+    id: project
+    attributes:
+      label: 项目 / Project
+      description: 项目名或 feedback 目录名。
+      placeholder: 项目名或目录名
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 版本或 commit / Version
+  - type: textarea
+    id: question
+    attributes:
+      label: 问题 / Question
+      description: 你想确认什么？
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: 环境与上下文 / Context
+      description: 操作系统、配置、命令或使用场景。
+  - type: textarea
+    id: attempted
+    attributes:
+      label: 已尝试 / What you tried
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 提交前确认 / Checklist
+      options:
+        - label: 我已搜索过已有 issue 和 README。
+          required: true
+        - label: 我没有包含密钥、令牌或个人数据。
+          required: true
