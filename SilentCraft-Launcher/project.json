@@ -1,0 +1,7 @@
+{
+  "name": "SilentCraft Launcher",
+  "slug": "silentcraft-launcher",
+  "description": "基于 HMCL 的 Minecraft 启动器分支，重点提供服务端下载与管理能力",
+  "status": "active",
+  "order": 5
+}
